@@ -1,5 +1,6 @@
 package com.darkbluesharp.multiplicationgame;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,8 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -136,6 +139,60 @@ public class MainActivity extends AppCompatActivity {
         mAdview2 = resultdialog01.findViewById(R.id.adView2); //배너광고 레이아웃 가져오기
         AdRequest adRequest2 = new AdRequest.Builder().build();
         mAdview2.loadAd(adRequest2);
+
+          // 광고가 제대로 로드 되는지 테스트 하기 위한 코드입니다.
+
+        mAdview.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded () {
+
+                // Code to be executed when an ad finishes loading.
+
+                // 광고가 문제 없이 로드시 출력됩니다.
+
+                Log.e("@@@", "onAdLoaded");
+            //    mAdview.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                // Code to be executed when an ad request fails.
+
+                // 광고 로드에 문제가 있을시 출력됩니다.
+                mAdview.setVisibility(View.GONE);
+                Log.e("@@@", "onAdFailedToLoad " + loadAdError);
+            }
+
+    });
+
+       // 광고가 제대로 로드 되는지 테스트 하기 위한 코드입니다.
+
+       mAdview2.setAdListener(new AdListener() {
+
+           @Override
+           public void onAdLoaded () {
+
+               // Code to be executed when an ad finishes loading.
+
+               // 광고가 문제 없이 로드시 출력됩니다.
+
+               Log.e("@@@2", "onAdLoaded");
+            //   mAdview2.setVisibility(View.VISIBLE);
+           }
+
+           @Override
+           public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+               super.onAdFailedToLoad(loadAdError);
+               // Code to be executed when an ad request fails.
+
+               // 광고 로드에 문제가 있을시 출력됩니다.
+               mAdview2.setVisibility(View.GONE);
+               Log.e("@@@2", "onAdFailedToLoad " + loadAdError);
+           }
+
+       });
 
 
 
@@ -272,6 +329,8 @@ public class MainActivity extends AppCompatActivity {
        // soundPool.stop(backgroundSound);
     }
 
+
+
     @Override
     protected void onPause() {
         background.pause();
@@ -355,8 +414,8 @@ public class MainActivity extends AppCompatActivity {
                     resultText = resultText +
                             "level "+level+
                             "\nSCORE "+count+
-                            "\ncorrect answer "+correctCount+
-                            "\nwrong answer "+wrongCount;
+                            "\nO answer "+correctCount+
+                            "\nX answer "+wrongCount;
                     showResultDialo(resultText);
 
                     count = 0;

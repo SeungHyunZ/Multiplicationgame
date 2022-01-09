@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@color/black">
@@ -12,8 +12,6 @@
         android:id="@+id/adView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal|center_vertical"
         ads:adSize="MEDIUM_RECTANGLE"
         ads:adUnitId="ca-app-pub-8558357952484896/3527565946"
