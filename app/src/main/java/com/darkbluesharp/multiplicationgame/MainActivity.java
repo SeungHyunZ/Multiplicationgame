@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 // 광고가 문제 없이 로드시 출력됩니다.
 
                 Log.e("@@@", "onAdLoaded");
-            //    mAdview.setVisibility(View.VISIBLE);
+                mAdview.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                // 광고가 문제 없이 로드시 출력됩니다.
 
                Log.e("@@@2", "onAdLoaded");
-            //   mAdview2.setVisibility(View.VISIBLE);
+               mAdview2.setVisibility(View.VISIBLE);
            }
 
            @Override
